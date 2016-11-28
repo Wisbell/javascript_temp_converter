@@ -7,8 +7,7 @@ temperature.*/
 /* Create a radio button group where Celsius or Fahrenheit can be
  selected as the scale that the number should be converted to. */
 
-/*
-Create a block level element that will hold the text of 
+/*Create a block level element that will hold the text of 
 the converted temperature.*/
 
 /*Create a button that, when clicked, displays the converted 
@@ -29,3 +28,26 @@ converted temperature should be blue.*/
 
 /*For any other temperature, the color should be green.
 */
+
+var clear_input = function() {
+	console.log("clear_input test");
+	
+	document.getElementsByName('convert_this')[0].value = "";
+}
+
+var convert_temperature = function () {
+	console.log("convert_temperature test");
+
+	// get temperature from text input
+	var temp_to_convert = document.getElementsByName('convert_this')[0].value;
+
+	console.log(temp_to_convert)
+
+	// check radio button
+
+	// do conversion of radio button
+
+	// appendChild to the dom with the answer
+}
+
+// clear_input()

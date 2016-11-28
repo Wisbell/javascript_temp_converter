@@ -5,16 +5,21 @@
 </head>
 <body>
 
-	<div class="">
-		<input type="text" name="">
-
-		<input type="radio" name="temp" value="fahrenheit">
-		<input type="radio" name="temp" value="celsius">
-		<input type="submit" value="Convert Temperature">
-		<input type="submit" value="Clear Input">
+	<div class="temp-form">
+		<fieldset>
+			<legend>Temperatuer Converter</legend>
+			Temperature:<br>
+			<input type="text" name="convert_this" value="blah">&deg;<span class="show_f_or_c"></span><br>
+			Conversion<br>
+			<input type="radio" name="temp" value="fahrenheit">Fahrenheit
+			<input type="radio" name="temp" value="celsius">Celsius<br>
+			<input type="submit" value="Convert Temperature" onclick="convert_temperature()">
+			<input type="submit" value="Clear Input" onclick="clear_input()">
+		</fieldset>
+		
 	</div>
 
-	<div>
+	<div class="converted-temp">
 		<h1>Converted Temperature</h1>
 		<p>temp-here</p>
 	</div>
