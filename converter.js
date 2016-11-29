@@ -29,7 +29,23 @@ converted temperature should be blue.*/
 /*For any other temperature, the color should be green.
 */
 
+var input_text_field = document.getElementById("convert_field");
+console.log(input_text_field);
+input_text_field.addEventListener("keypress", enter_key_listener);
+
 var converted_temperature;
+
+// var enter_key_listener = function (e) {
+// 	if(e.keyCode == 13){
+// 		convert_temperature();
+// 	}
+// }
+
+function enter_key_listener(e){
+	if(e.keyCode == 13){
+		convert_temperature();
+	}
+}
 
 var clear_input = function() {
 	//console.log("clear_input test");
