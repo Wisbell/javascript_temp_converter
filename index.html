@@ -23,13 +23,13 @@
 			<input type="radio" name="temp" value="fahrenheit" checked="checked">Fahrenheit
 			<input type="radio" name="temp" value="celsius">Celsius<br>
 
-			<input type="submit" value="Convert Temperature" onclick="convert_temperature()">
-			<input type="submit" value="Clear Input" onclick="clear_input()">
+			<input type="submit" value="Convert Temperature" id="convert_button">
+			<input type="submit" value="Clear Input" id="clear_button">
 		</fieldset>
 		
 	</div>
 
-	<div class="converted-temp">
+	<div id="temp_is_div" class="converted-temp">
 		<h1>Converted Temperature is</h1>
 		<p id="final_temp"></p>
 	</div>

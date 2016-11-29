@@ -1,51 +1,43 @@
-/* Write a program that will convert a temperature from 
-fahrenheit to celsius, or from celsius to fahrenheit. */
 
-/* In the HTML, have one input field where someone can enter in a 
-temperature.*/
-
-/* Create a radio button group where Celsius or Fahrenheit can be
- selected as the scale that the number should be converted to. */
-
-/*Create a block level element that will hold the text of 
-the converted temperature.*/
-
-/*Create a button that, when clicked, displays the converted 
-temperature.*/
-
-/*Create another button that, when clicked, clears any text 
-in the input field.*/
-
-/*Add an event handler to the input field that checks if the 
-user pressed the enter key, and if that happens, perform
- the conversion.*/
-
-/*If the temperature is greater than 90F/32C the color of 
-the converted temperature should be red.*/
-
-/*If the temperature is less than 32F/0C the color of the 
-converted temperature should be blue.*/
-
-/*For any other temperature, the color should be green.
-*/
-
-var input_text_field = document.getElementById("convert_field");
-console.log(input_text_field);
-input_text_field.addEventListener("keypress", enter_key_listener);
 
 var converted_temperature;
 
-// var enter_key_listener = function (e) {
-// 	if(e.keyCode == 13){
-// 		convert_temperature();
-// 	}
-// }
+// Event Listener Help
+// http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onkeypress_addeventlistener
+// https://dzone.com/articles/back-basics-%E2%80%93-using-keyboard
+
+var input_text_field = document.getElementById("convert_field");
+input_text_field.addEventListener("keypress", enter_key_listener);
+
+
+var convert_button = document.getElementById("convert_button");
+convert_button.addEventListener("click", convert_button_listener);
+
+
+var convert_button = document.getElementById("clear_button");
+convert_button.addEventListener("click", clear_button_listener);
+
+
+function convert_button_listener(){
+	convert_temperature();
+}
+
+function clear_button_listener(){
+	clear_input();
+}
 
 function enter_key_listener(e){
 	if(e.keyCode == 13){
 		convert_temperature();
 	}
 }
+
+/* This does not work */
+// var enter_key_listener = function (e) {
+// 	if(e.keyCode == 13){
+// 		convert_temperature();
+// 	}
+// }
 
 var clear_input = function() {
 	//console.log("clear_input test");
@@ -124,6 +116,19 @@ var convert_to_fahrenheit = function (temp_to_convert) {
 	converted_temperature = (temp_to_convert * (9/5)) + 32;
 	console.log(converted_temperature);
 	document.getElementById("final_temp").innerHTML = converted_temperature.toFixed(1);
+
+	if (converted_temperature > 90) {
+		document.getElementById("final_temp").style.color = "red";
+	}
+
+	else if (converted_temperature < 32) {
+		document.getElementById("final_temp").style.color = "blue";
+	}
+
+	else {
+		document.getElementById("final_temp").style.color = "green";
+	}
+
 }
 
 
@@ -132,6 +137,19 @@ var convert_to_celsius = function (temp_to_convert) {
 	
 	converted_temperature = (temp_to_convert - 32) * (5/9);
 	console.log(converted_temperature);
+	//document.getElementById("final_temp").style.color = "green";
 	document.getElementById("final_temp").innerHTML = converted_temperature.toFixed(1);
+
+	if (converted_temperature > 32) {
+		document.getElementById("final_temp").style.color = "red";
+	}
+
+	else if (converted_temperature < 0) {
+		document.getElementById("final_temp").style.color = "blue";
+	}
+
+	else {
+		document.getElementById("final_temp").style.color = "green";
+	}
 	
 }
