@@ -70,29 +70,9 @@ var convert_temperature = function () {
 
 		else {
 			console.log("Convert temp to Celcius")
-			//convert_to_celsius(temp_to_convert);
+			convert_to_celsius(temp_to_convert);
 		}
 	}
-
-
-
-
-
-
-
-	// Calculate Celsius to fareinheit
-
-	//convert_to_fareinheit(temp_to_convert);
-
-	// appendChild to the dom with the answer
-
-	//var temperature_output = converted_temperature + "&deg;";
-
-	//document.getElementById("final_temp").innerHTML = temperature_output;
-	//document.getElementById("final_temp").createTextNode("")
-
-
-
 	
 }
 
@@ -119,30 +99,23 @@ var check_if_conversion_needed = function(){
 
 	return true;
 
-
 }
 
 
 var convert_to_fahrenheit = function (temp_to_convert) {
 	console.log("convert_to_fahrenheit test");
-	converted_temperature = round((temp_to_convert * (9/5)) + 32);
-	console.log(converted_temperature);
-	document.getElementById("final_temp").innerHTML = converted_temperature;
-}
-
-var convert_to_celsius = function () {
 	
+	converted_temperature = (temp_to_convert * (9/5)) + 32;
+	console.log(converted_temperature);
+	document.getElementById("final_temp").innerHTML = converted_temperature.toFixed(1);
 }
 
 
-// http://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-in-javascript
-function round(x, digits){
-  return parseFloat(x.toFixed(digits))
-
-    /*
-    round(1.222,  2) ;
- 	// 1.22
-    round(1.222, 10) ;
- 	// 1.222
- 	*/
+var convert_to_celsius = function (temp_to_convert) {
+	console.log("convert_to_celsius test");
+	
+	converted_temperature = (temp_to_convert - 32) * (5/9);
+	console.log(converted_temperature);
+	document.getElementById("final_temp").innerHTML = converted_temperature.toFixed(1);
+	
 }
