@@ -29,17 +29,22 @@ converted temperature should be blue.*/
 /*For any other temperature, the color should be green.
 */
 
-var converted_temperature
+var converted_temperature;
 
 var clear_input = function() {
 	//console.log("clear_input test");
 	
 	// Grabs element with name 'convert_this' and puts it in an array which contains one item
 	document.getElementsByName('convert_this')[0].value = "";
+
+	document.getElementById("final_temp").innerHTML = '';
 }
 
 var convert_temperature = function () {
 	//console.log("convert_temperature test");
+
+	// gets value of the selected radio input - "fareinheit" or "celsius"
+	var radio_value = document.querySelector('input[name="temp"]:checked').value;
 
 	
 	// 0 is fareinheit -  1 is celsius - To check to see if conversion is necessary
@@ -50,15 +55,25 @@ var convert_temperature = function () {
 	var temp_to_convert = document.getElementsByName('convert_this')[0].value;
 
 
-	// Check to see if the input is already in the requested format
-	console.log(check_if_conversion_needed() + "is false");
 
-	if(check_if_conversion_needed()){
-		console.log(check_if_conversion_needed() + "is false");
-		return false;
-	};
+	// Check to see if a conversion is already in the requested format
+	var conversion_needed = check_if_conversion_needed();
 
-	console.log("This shouldnt run")
+	
+	console.log(radio_value);
+
+	if(conversion_needed) {
+		if(radio_value === "fahrenheit") {
+			console.log("Convert temp to fahrenheit");
+			convert_to_fahrenheit(temp_to_convert);
+		}
+
+		else {
+			console.log("Convert temp to Celcius")
+			//convert_to_celsius(temp_to_convert);
+		}
+	}
+
 
 
 
@@ -67,13 +82,13 @@ var convert_temperature = function () {
 
 	// Calculate Celsius to fareinheit
 
-	convert_to_fareinheit(temp_to_convert);
+	//convert_to_fareinheit(temp_to_convert);
 
 	// appendChild to the dom with the answer
 
-	var temperature_output = converted_temperature + "&deg;";
+	//var temperature_output = converted_temperature + "&deg;";
 
-	document.getElementById("final_temp").innerHTML = temperature_output;
+	//document.getElementById("final_temp").innerHTML = temperature_output;
 	//document.getElementById("final_temp").createTextNode("")
 
 
@@ -83,21 +98,36 @@ var convert_temperature = function () {
 
 var check_if_conversion_needed = function(){
 
+	console.log("check_if_conversion_needed - called")
 	// gets value of the selected radio input - "fareinheit" or "celsius"
 	var radio_value = document.querySelector('input[name="temp"]:checked').value;
+	var temp_type = document.getElementById("temp_type").selectedIndex;
 
-	if(radio_value === "fahrenheit") {
-		if (temp_type === 0) {}
-			console.log("Temperature is already in fareinheit");
-			return false;
+	if(radio_value === "fahrenheit" && temp_type === 0) {
+		console.log("Temperature is already in fareinheit");
+		document.getElementById("final_temp").textContent = "Temperature is already in fareinheit!";
+		return false;
+		
 	}
+
+	if(radio_value === "celsius" && temp_type === 1) {
+		console.log("Temperature is already in celsius");
+		document.getElementById("final_temp").textContent = "Temperature is already in celsius!";
+		return false;
+		
+	}
+
+	return true;
+
+
 }
 
 
-var convert_to_fareinheit = function (temp_to_convert) {
-	console.log("convert_to_fareinheit test");
+var convert_to_fahrenheit = function (temp_to_convert) {
+	console.log("convert_to_fahrenheit test");
 	converted_temperature = round((temp_to_convert * (9/5)) + 32);
 	console.log(converted_temperature);
+	document.getElementById("final_temp").innerHTML = converted_temperature;
 }
 
 var convert_to_celsius = function () {
