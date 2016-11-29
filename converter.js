@@ -29,25 +29,90 @@ converted temperature should be blue.*/
 /*For any other temperature, the color should be green.
 */
 
+var converted_temperature
+
 var clear_input = function() {
-	console.log("clear_input test");
+	//console.log("clear_input test");
 	
+	// Grabs element with name 'convert_this' and puts it in an array which contains one item
 	document.getElementsByName('convert_this')[0].value = "";
 }
 
 var convert_temperature = function () {
-	console.log("convert_temperature test");
+	//console.log("convert_temperature test");
 
-	// get temperature from text input
+	
+	// 0 is fareinheit -  1 is celsius - To check to see if conversion is necessary
+	var temp_type = document.getElementById("temp_type").selectedIndex;
+
+
+	// gets temperature from text input field
 	var temp_to_convert = document.getElementsByName('convert_this')[0].value;
 
-	console.log(temp_to_convert)
 
-	// check radio button
+	// Check to see if the input is already in the requested format
+	console.log(check_if_conversion_needed() + "is false");
 
-	// do conversion of radio button
+	if(check_if_conversion_needed()){
+		console.log(check_if_conversion_needed() + "is false");
+		return false;
+	};
+
+	console.log("This shouldnt run")
+
+
+
+
+
+
+	// Calculate Celsius to fareinheit
+
+	convert_to_fareinheit(temp_to_convert);
 
 	// appendChild to the dom with the answer
+
+	var temperature_output = converted_temperature + "&deg;";
+
+	document.getElementById("final_temp").innerHTML = temperature_output;
+	//document.getElementById("final_temp").createTextNode("")
+
+
+
+	
 }
 
-// clear_input()
+var check_if_conversion_needed = function(){
+
+	// gets value of the selected radio input - "fareinheit" or "celsius"
+	var radio_value = document.querySelector('input[name="temp"]:checked').value;
+
+	if(radio_value === "fahrenheit") {
+		if (temp_type === 0) {}
+			console.log("Temperature is already in fareinheit");
+			return false;
+	}
+}
+
+
+var convert_to_fareinheit = function (temp_to_convert) {
+	console.log("convert_to_fareinheit test");
+	converted_temperature = round((temp_to_convert * (9/5)) + 32);
+	console.log(converted_temperature);
+}
+
+var convert_to_celsius = function () {
+	
+}
+
+
+// http://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-in-javascript
+function round(x, digits){
+  return parseFloat(x.toFixed(digits))
+
+    /*
+    round(1.222,  2) ;
+ 	// 1.22
+    round(1.222, 10) ;
+ 	// 1.222
+ 	*/
+}

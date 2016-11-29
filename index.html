@@ -6,13 +6,23 @@
 <body>
 
 	<div class="temp-form">
+
 		<fieldset>
 			<legend>Temperatuer Converter</legend>
-			Temperature:<br>
-			<input type="text" name="convert_this" value="blah">&deg;<span class="show_f_or_c"></span><br>
+
+			Starting Temperature:<br>
+
+			<input type="text" name="convert_this" value="">&deg;
+				<select id="temp_type">
+					<option>F</option>
+					<option>C</option>
+				</select><br>
+
 			Conversion<br>
-			<input type="radio" name="temp" value="fahrenheit">Fahrenheit
+
+			<input type="radio" name="temp" value="fahrenheit" checked="checked">Fahrenheit
 			<input type="radio" name="temp" value="celsius">Celsius<br>
+
 			<input type="submit" value="Convert Temperature" onclick="convert_temperature()">
 			<input type="submit" value="Clear Input" onclick="clear_input()">
 		</fieldset>
@@ -20,8 +30,8 @@
 	</div>
 
 	<div class="converted-temp">
-		<h1>Converted Temperature</h1>
-		<p>temp-here</p>
+		<h1>Converted Temperature is</h1>
+		<p id="final_temp">temp-here</p>
 	</div>
 
 <script type="text/javascript" src="converter.js"></script>
